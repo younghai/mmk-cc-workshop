@@ -9,6 +9,10 @@
           {
             "type": "command",
             "command": "bash .claude/scripts/check-env.sh"
+          },
+          {
+            "type": "command",
+            "command": "pip install -r requirements.txt -q 2>/dev/null || true"
           }
         ]
       }
