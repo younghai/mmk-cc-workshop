@@ -12,7 +12,7 @@
           },
           {
             "type": "command",
-            "command": "pip install -r requirements.txt -q 2>/dev/null || true"
+            "command": "bash .claude/scripts/setup-libs.sh"
           }
         ]
       }
