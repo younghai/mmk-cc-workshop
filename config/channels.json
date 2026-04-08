@@ -29,10 +29,10 @@
     "max_duration_seconds": 7200
   },
   "slack": {
-    "channel_id": "PLACEHOLDER"
+    "channel_id": "C0ARLNXM336"
   },
   "notion": {
-    "database_id": "PLACEHOLDER"
+    "database_id": "8288971177564078b255fd5ad4835e97"
   },
   "processing": {
     "videos_per_channel": 10,
