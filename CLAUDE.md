@@ -41,6 +41,45 @@ mmk youtube videotype <youtube-url>
 - `mmk paymint ...` — 사용 불가
 - `mmk threads ...` — 사용 불가
 
+## 증시 유튜브 모니터링 자동화
+
+한국 증시 유튜브 채널을 모니터링하여 키워드 매칭 영상을 자막 추출 → 요약 → Slack 알림 → Notion 저장하는 자동화 시스템입니다.
+
+### 커스텀 스킬 (슬래시 커맨드)
+
+| 스킬 | 설명 |
+|------|------|
+| `/stock-monitor` | 전체 파이프라인 실행 (메인 오케스트레이터) |
+| `/fetch-videos` | YouTube RSS 피드 수집 + 키워드 필터링 |
+| `/summarize-video <url>` | 개별 영상 자막 추출 + 요약 |
+| `/notify-slack` | Slack 채널에 요약 알림 전송 |
+| `/save-notion` | Notion 데이터베이스에 요약 저장 |
+
+### 자동 스케줄 실행
+
+```
+/loop 60m /stock-monitor
+```
+
+### 설정 파일
+
+- `config/channels.json` — 모니터링 채널, 키워드, Slack/Notion ID
+- `data/processed.json` — 처리 완료 영상 추적 (중복 방지)
+
+### 모니터링 채널
+
+- 한경 글로벌마켓 (`UCWskYkV4c4S9D__rsfOl2JA`)
+- 증시각도기TV (`UCdOjVxkj5JA0iDu3_xcsTyQ`)
+
+### 필터 키워드
+
+경제, 금리, 환율, 물가, 공급망, 무역, 분석, 전망
+
+### Notion DB
+
+- DB: "증시 유튜브 영상 요약" (`4a4ce38b02334900b473aafeb2a8f2ea`)
+- 속성: 제목, 채널명, 요약, 핵심 포인트, 영상 URL, 발행일, 처리일
+
 ## 세션 시작 시
 
 세션이 시작되면 `.claude/scripts/check-env.sh` 스크립트가 자동 실행되어 환경 정보를 출력합니다:
